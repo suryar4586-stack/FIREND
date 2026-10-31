@@ -59,7 +59,7 @@ export const siteContent = {
       },
       {
         id: 3,
-        question: "Does talking to you every day mean I'm giving you hope?",
+        question: "Does talking to you every day mean you are giving me hope?",
         answer:
           "No. I spend time talking to my friends because I enjoy their company and want to know them better.\n\nAnd one thing I want to make clear: regardless of what anyone says or assumes, I don't love you romantically.\n\nI promise. I hope this clears things up.",
         categoryTag: "A Promise",
