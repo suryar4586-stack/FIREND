@@ -1,0 +1,30 @@
+/* Cinematic Animations & Transitions */
+
+/* Smooth fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle border shimmer */
+.shimmer-border {
+  position: relative;
+}
+.shimmer-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(120deg, transparent 30%, rgba(201, 154, 158, 0.4), transparent 70%);
+  pointer-events: none;
+  border-radius: inherit;
+}
