@@ -3,6 +3,8 @@ export interface QuestionItem {
   question: string;
   answer: string;
   categoryTag: string;
+  footerNote?: string;
+  iconType?: 'help' | 'heart' | 'thought';
   colorScheme: {
     cardBg: string;
     border: string;
@@ -69,6 +71,22 @@ export const siteContent = {
           tagBg: "bg-emerald-500/20 text-emerald-300",
           textColor: "text-emerald-100",
           accentGlow: "shadow-emerald-950/50",
+        },
+      },
+      {
+        id: 4,
+        question: "Why did I get upset that day when you mentioned hanging out with that guy? Was I jealous?",
+        answer:
+          "Honestly, I didn't have any problem with you hanging out with your friend. That's completely okay, and I never wanted to stop you from spending time with anyone.\n\nThe only thing was, I had asked you to meet me. Even when I said I could come and meet you, you seemed hesitant.\n\nThat made me feel a little upset.\n\nMaybe I felt a little jealous because, at that moment, I wondered whether spending time with him was your priority while you hesitated to meet me.\n\nBut I want you to understand one thing: I wasn't upset because you were spending time with him. I was upset because I felt that you didn't really want to meet me.\n\nThat's all. I just wanted to explain what was going through my mind.",
+        categoryTag: "An Honest Thought",
+        footerNote: "Sometimes, it's not about who you're spending time with. It's just about wanting to spend a little time together.",
+        iconType: "thought",
+        colorScheme: {
+          cardBg: "bg-gradient-to-br from-[#2F1A12] via-[#24130D] to-[#170B07]",
+          border: "border-orange-500/40 hover:border-orange-400",
+          tagBg: "bg-orange-500/20 text-orange-300",
+          textColor: "text-orange-100",
+          accentGlow: "shadow-orange-950/50",
         },
       },
     ] as QuestionItem[],

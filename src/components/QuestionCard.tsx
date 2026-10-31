@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { QuestionItem } from '../data/content';
-import { HelpCircle, CheckCircle2, ChevronDown, ChevronUp } from 'lucide-react';
+import { HelpCircle, CheckCircle2, ChevronDown, ChevronUp, MessageCircle, Heart } from 'lucide-react';
 
 interface QuestionCardProps {
   item: QuestionItem;
@@ -9,6 +9,16 @@ interface QuestionCardProps {
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({ item, isOpenDefault = false }) => {
   const [isRevealed, setIsRevealed] = useState(isOpenDefault);
+
+  const renderIcon = () => {
+    if (item.iconType === 'thought') {
+      return <MessageCircle className="w-5 h-5 text-orange-300" />;
+    }
+    if (item.iconType === 'heart') {
+      return <Heart className="w-5 h-5 text-rose-300 fill-rose-300/30" />;
+    }
+    return <HelpCircle className="w-5 h-5 text-rose-300" />;
+  };
 
   return (
     <div
@@ -26,8 +36,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ item, isOpenDefault 
 
       {/* Question Title */}
       <div className="flex items-start gap-3 mb-6">
-        <div className="p-2 rounded-xl bg-white/10 text-rose-400 shrink-0 mt-0.5">
-          <HelpCircle className="w-5 h-5" />
+        <div className="p-2 rounded-xl bg-white/10 shrink-0 mt-0.5">
+          {renderIcon()}
         </div>
         <h3 className="text-xl sm:text-2xl font-serif-editorial text-white leading-snug font-medium">
           {item.question}
@@ -37,7 +47,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ item, isOpenDefault 
       {/* Reveal Answer Button */}
       <button
         onClick={() => setIsRevealed(!isRevealed)}
-        className="w-full flex items-center justify-between px-5 py-3 rounded-2xl bg-white/5 hover:bg-white/15 border border-white/15 text-white/90 text-xs sm:text-sm font-sans-modern tracking-wider uppercase transition-all duration-300 cursor-pointer"
+        className="w-full flex items-center justify-between px-5 py-3.5 rounded-2xl bg-white/5 hover:bg-white/15 border border-white/15 text-white/90 text-xs sm:text-sm font-sans-modern tracking-wider uppercase transition-all duration-300 cursor-pointer"
       >
         <div className="flex items-center gap-2">
           <CheckCircle2
@@ -52,14 +62,24 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ item, isOpenDefault 
 
       {/* Answer Expand Area */}
       <div
-        className={`transition-all duration-500 ease-out overflow-hidden ${
-          isRevealed ? 'max-h-96 opacity-100 mt-6 pt-6 border-t border-white/15' : 'max-h-0 opacity-0'
+        className={`transition-all duration-700 ease-in-out overflow-hidden ${
+          isRevealed ? 'max-h-[1200px] opacity-100 mt-6 pt-6 border-t border-white/15' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="relative pl-4 border-l-2 border-rose-400/60">
+        <div className="relative pl-4 sm:pl-6 border-l-2 border-orange-400/60 space-y-4">
           <p className="text-base sm:text-lg font-serif-editorial italic text-white/95 leading-relaxed whitespace-pre-line font-light">
             {item.answer}
           </p>
+
+          {/* Bottom special note if present */}
+          {item.footerNote && (
+            <div className="mt-6 pt-4 border-t border-white/10 flex items-start gap-3 p-3.5 rounded-2xl bg-orange-500/10 border border-orange-500/20">
+              <Heart className="w-4 h-4 text-orange-300 fill-orange-300/40 shrink-0 mt-0.5" />
+              <p className="text-xs sm:text-sm font-sans-modern italic text-orange-200/90 leading-relaxed font-light">
+                "{item.footerNote}"
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

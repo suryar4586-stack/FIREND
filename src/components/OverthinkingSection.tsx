@@ -47,7 +47,7 @@ export const OverthinkingSection: React.FC = () => {
         {/* Question Cards Grid */}
         <div
           className={`transition-all duration-700 ease-out overflow-hidden ${
-            isZoneActive ? 'max-h-[3000px] opacity-100 mt-14' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
+            isZoneActive ? 'max-h-[5000px] opacity-100 mt-14' : 'max-h-0 opacity-0 mt-0 pointer-events-none'
           }`}
         >
           <div className="space-y-8">
